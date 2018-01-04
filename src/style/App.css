@@ -1,0 +1,44 @@
+.app {
+  text-align: center;
+  display: flex;
+  flex-direction:column;
+}
+
+header {
+  display: flex;
+  flex-direction:row;
+}
+
+.contentPanel {
+  width: 100%;
+  margin: auto;
+  text-align: left;
+  display:flex;
+  flex-direction:row;
+  background: #EEEEEE;
+}
+
+.content {
+  display:flex;
+  flex-direction:column;
+  padding: 1em;
+}
+
+.app-logo {
+  animation: app-logo-spin infinite 20s linear;
+  height: 30px;
+}
+
+.app-header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+}
+
+.app-title {
+  font-size: 1.5em;
+}
+
+.app-intro {
+  font-size: large;
+}
