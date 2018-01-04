@@ -1,6 +1,9 @@
 import React, {Component} from "react";
+import {Route, Redirect} from "react-router-dom";
 import logo from "../images/logo.svg";
 import Sidebar from "./Sidebar";
+import Teams from "./Teams";
+import Fixture from "./Fixture";
 import "../style/App.css";
 
 class App extends Component {
@@ -14,9 +17,9 @@ class App extends Component {
           <div className="contentPanel">
             <Sidebar />
             <div id="content" className="content">
-              <ul>
-                <li>foo</li>
-              </ul>
+              <Route path="/fixture" component={Fixture}/>
+              <Route path="/teams" component={Teams}/>
+              <Redirect from="/" to="/fixture"/>
             </div>
           </div>
         </div>
