@@ -7,8 +7,9 @@ class Sidebar extends Component {
     return (
         <div className="sidebar">
           <ul>
-            <li><Link to="/teams">Teams</Link></li>
-            <li><Link to="/fixture">Fixture</Link></li>
+            <li><Link to="/clubs">Clubs</Link></li>
+            <li><Link to="/fixtures">Fixtures</Link></li>
+            <li><Link to="/ladders">Ladders</Link></li>
           </ul>
         </div>
     );

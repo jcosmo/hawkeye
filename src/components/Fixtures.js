@@ -5,7 +5,7 @@ class Fixture extends Component {
   render() {
     return (
         <div className="fixture">
-          Who plays who and when
+          Who plays who, by grade
         </div>
     );
   }
