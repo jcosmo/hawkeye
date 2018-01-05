@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import "../style/Sidebar.css";
 
 class Fixture extends Component {
   render() {

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {withRouter} from 'react-router'
-import {Switch, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import ClubList from './ClubList.js'
 import Club from './Club.js'
 

@@ -42,3 +42,18 @@ header {
 .app-intro {
   font-size: large;
 }
+
+.sidebar {
+  display: flex;
+  flex-direction:column;
+  padding-right: 1em;
+  padding-top: 1em;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding-bottom:0.25em;
+}
