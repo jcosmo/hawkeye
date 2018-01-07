@@ -2,16 +2,15 @@ import React, {Component} from "react";
 import {Link} from 'react-router-dom';
 import {inject} from 'mobx-react';
 
-@inject("rootStore")
+@inject(stores => ({clubStore: stores.rootStore.clubStore}))
 class ClubList extends Component {
-
   render() {
-    const clubs = this.props.rootStore.clubStore.clubs;
+    const clubs = this.props.clubStore.clubs;
 
     return (
         <div className="clublist">
+          There are {clubs.length} clubs.
           <ul>
-            <li> There are {clubs.length} clubs </li>
             <li>
               <Link to={this.props.match.url + "/1"}>Club 1</Link>
             </li>
