@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, Provider} from "react";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Content from "./Content";

@@ -1,26 +1,27 @@
 .app {
   text-align: center;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
+  height: 100vh;
 }
 
 header {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
 }
 
 .contentPanel {
   width: 100%;
-  margin: auto;
+  height: 100%;
   text-align: left;
-  display:flex;
-  flex-direction:row;
-  background: #EEEEEE;
+  display: flex;
+  flex-direction: row;
+  background: #FEFEFE;
 }
 
 .content {
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   padding: 1em;
 }
 
@@ -45,15 +46,21 @@ header {
 
 .sidebar {
   display: flex;
-  flex-direction:column;
-  padding-right: 1em;
-  padding-top: 1em;
+  flex-direction: column;
+  padding: 1em;
+  background: #EEEEEE;
 }
 
 .sidebar ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
-  padding-bottom:0.25em;
+  padding-bottom: 0.25em;
+}
+
+.sidebar .activeLink {
+  font-weight: bold;
 }

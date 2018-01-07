@@ -1,14 +1,14 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 class Sidebar extends Component {
   render() {
     return (
         <div className="sidebar">
           <ul>
-            <li><Link to="/clubs">Clubs</Link></li>
-            <li><Link to="/fixtures">Fixtures</Link></li>
-            <li><Link to="/ladders">Ladders</Link></li>
+            <li><NavLink to="/clubs" activeClassName="activeLink">Clubs</NavLink></li>
+            <li><NavLink to="/fixtures" activeClassName="activeLink">Fixtures</NavLink></li>
+            <li><NavLink to="/ladders" activeClassName="activeLink">Ladders</NavLink></li>
           </ul>
         </div>
     );

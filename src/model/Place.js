@@ -1,4 +1,0 @@
-class Place {
-  TEAMS;
-  FIXTURE;
-}
