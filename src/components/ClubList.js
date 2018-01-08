@@ -5,18 +5,14 @@ import {inject} from 'mobx-react';
 @inject(stores => ({clubStore: stores.rootStore.clubStore}))
 class ClubList extends Component {
   render() {
-    const clubs = this.props.clubStore.clubs;
+    const content = this.props.clubStore.clubs.map(club => <li key={club.id}>
+      <Link to={this.props.match.url + "/" + club.id}>{club.name}</Link>
+    </li>);
 
     return (
         <div className="clublist">
-          There are {clubs.length} clubs.
           <ul>
-            <li>
-              <Link to={this.props.match.url + "/1"}>Club 1</Link>
-            </li>
-            <li>
-              <Link to={this.props.match.url + "/2"}>Club 2</Link>
-            </li>
+            {content}
           </ul>
         </div>
     );

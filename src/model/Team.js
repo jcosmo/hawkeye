@@ -1,7 +1,21 @@
-import {observable, action, computed} from "mobx";
+import {observable} from "mobx";
 
 class Team {
+  teamStore;
+  id;
+  @observable club;
+  @observable grade;
+  @observable members = [];
 
+  constructor(teamStore, id) {
+    this.id = id;
+    this.teamStore = teamStore;
+  }
+
+  updateFromJson(json) {
+    this.club = this.teamStore.rootStore.clubStore.resolve(json.clubId);
+    this.grade = this.teamStore.rootStore.gradeStore.resolve(json.gradeId)
+  }
 }
 
-export default Tean;
+export default Team;

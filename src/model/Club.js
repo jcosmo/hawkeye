@@ -1,12 +1,17 @@
-import {observable, action, computed} from "mobx";
+import {observable} from "mobx";
 
 class Club {
   clubStore;
+  id;
   @observable name = "";
 
-  constructor(store, name) {
+  constructor(store, id) {
     this.clubStore = store;
-    this.name = name
+    this.id = id;
+  }
+
+  updateFromJson(json) {
+    this.name = json.name;
   }
 }
 

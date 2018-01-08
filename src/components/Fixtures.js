@@ -1,13 +1,18 @@
 import React, {Component} from "react";
+import Fixture from './Fixture';
+import {inject} from 'mobx-react';
 
-class Fixture extends Component {
+@inject( stores => ({gradeStore: stores.rootStore.gradeStore}))
+class Fixtures extends Component {
   render() {
+    const grades = this.props.gradeStore.grades;
+    const fixtures = grades.map(grade => <Fixture grade={grade}/>);
     return (
-        <div className="fixture">
-          Who plays who, by grade
+        <div className="fixtures">
+          {fixtures}
         </div>
     );
   }
 }
 
-export default Fixture;
+export default Fixtures;

@@ -1,35 +1,47 @@
-import {observable, action, computed} from "mobx";
+import {computed, observable} from "mobx";
 
 class Grade {
-  @observable grade = 'D';
-  @observable level = "1";
+  gradeStore;
+  id;
+  @observable letter = "D";
+  @observable category = 'Special';
+  @observable level = 0;
 
-  constructor(grade, level){
-    this.grade = grade;
-    this.level = level;
+  constructor(gradeStore, id) {
+    this.gradeStore = gradeStore;
+    this.id = id;
+  }
+
+  updateFromJson(json) {
+    this.letter = json.letter;
+    this.category = json.category;
+    this.level = json.level;
   }
 
   @computed
+  get
+  teams() {
+    return this.gradeStore.rootStore.teamStore.findForGrade(this);
+  }
+
+  @computed
+  get
   name() {
-    `${grade} ${levelAsString}`
+    return `${this.letter} ${this.category}${this.level !== 0 ? ' ' + this.level : ''}`;
   }
 
   @computed
-  levelAsString()
-  {
-    if (level < 0){
-      return `reserve ${-level}`
-    }
-    if ( level > 0 ){
-      return `special ${level}`
-    }
-    return `${level}`
-  }
-
-  @computed
+  get
   rank() {
-    return (4 - ('D' - grade)) * 12 + level;
+    let base = ('D'.charCodeAt(0) - this.letter.charCodeAt(0)) * 30;
+    if (this.category === 'Special') {
+      base = base + 20;
+    }
+    if (this.category === 'Grade') {
+      base = base + 10;
+    }
+    return base + (6 - this.level);
   }
 }
 
-export default Team;
+export default Grade;
