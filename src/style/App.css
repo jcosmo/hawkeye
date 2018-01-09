@@ -23,6 +23,7 @@ header {
   display: flex;
   flex-direction: column;
   padding: 1em;
+  font-size: 0.9rem;
 }
 
 .app-logo {
@@ -64,3 +65,41 @@ header {
 .sidebar .activeLink {
   font-weight: bold;
 }
+
+.fixtures {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.fixtures .fixture {
+  display:flex;
+  flex-direction: column;
+  min-height: 5em;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 10em;
+  margin:0 1em 1em 1em;
+}
+
+.fixtures .fixture .fixtureGrade {
+  font-weight: bold;
+}
+
+.fixtures .fixture .fixtureTeam {
+  display:flex;
+  flex-direction: row;
+  padding-left: 0.25em;
+  font-size: 0.9rem;
+}
+
+.fixtureNumber {
+  flex-grow:0;
+  flex-shrink:0;
+  flex-basis: 1.5em;
+}
+
+.fixtures .fixture .fixtureTeam .fixtureClubMName {
+  flex-grow:1;
+}
+

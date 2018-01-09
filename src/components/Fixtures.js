@@ -6,7 +6,7 @@ import {inject} from 'mobx-react';
 class Fixtures extends Component {
   render() {
     const grades = this.props.gradeStore.grades;
-    const fixtures = grades.map(grade => <Fixture grade={grade}/>);
+    const fixtures = grades.map(grade => <Fixture key={grade.id} grade={grade}/>);
     return (
         <div className="fixtures">
           {fixtures}
