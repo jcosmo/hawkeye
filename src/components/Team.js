@@ -4,7 +4,7 @@ class Team extends Component {
   render() {
     return (
         <div className="team">
-          Details of Team {this.props.match.params.teamid}
+          Fixture, ladder position, and weekly results of Team {this.props.match.params.teamid}
         </div>
     );
   }

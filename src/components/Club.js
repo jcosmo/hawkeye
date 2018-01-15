@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Link, Route} from 'react-router-dom';
-import Team from './Team.js'
+import TeamSummary from './TeamSummary.js'
 
 class Club extends Component {
   render() {
@@ -13,7 +13,7 @@ class Club extends Component {
 
           Ability to click through to a particular <Link to={this.props.match.url + "/team/2"}>team</Link>
           </div>
-          <Route path={this.props.match.url + "/team/:teamid"} component={Team}/>
+          <Route path={this.props.match.url + "/team/:teamid"} component={TeamSummary}/>
         </div>
     );
   }

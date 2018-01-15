@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 
 class Fixture extends Component {
   render() {
@@ -9,7 +10,7 @@ class Fixture extends Component {
             {team.fixtureNumber}
           </div>
           <div className="teamClubName">
-            {team.club.name}
+            <Link to={`/team/${team.id}`}>{team.club.name}</Link>
           </div>
         </div>);
     return (

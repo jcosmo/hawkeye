@@ -103,3 +103,13 @@ header {
   flex-grow:1;
 }
 
+.fixtureSummary span {
+  padding-right: 1em;
+}
+
+.fixtureSummary td {
+  padding-right: 1em;
+}
+.fixtureSummary th {
+  padding-right: 1em;
+}

@@ -8,10 +8,6 @@ class ClubStore {
   constructor(rootStore ) {
     this.rootStore = rootStore;
     this.load();
-
-    this.clubs.push(new Club(this, 1, 'aaa'));
-    this.clubs.push(new Club(this, 2, 'bbb'));
-    this.clubs.push(new Club(this, 3, 'test'));
   }
 
   load() {
