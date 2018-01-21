@@ -15,7 +15,7 @@ class Team {
 
   updateFromJson(json) {
     this.club = this.teamStore.rootStore.clubStore.resolve(json.clubId);
-    this.grade = this.teamStore.rootStore.gradeStore.resolve(json.gradeId)
+    this.grade = this.teamStore.rootStore.gradeStore.resolve(json.gradeId);
     this.fixtureNumber = json.fixtureNumber;
   }
 }

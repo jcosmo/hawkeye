@@ -60,6 +60,7 @@ class GradeStore {
   }
 
   resolve(id) {
+    id = parseInt(id, 10);
     return this.grades.find(x => x.id === id);
   }
 }

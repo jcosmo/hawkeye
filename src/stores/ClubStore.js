@@ -27,6 +27,7 @@ class ClubStore {
   }
 
   resolve(id) {
+    id = parseInt(id, 10);
     return this.clubs.find(x => x.id === id);
   }
 }
