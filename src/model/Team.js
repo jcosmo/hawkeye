@@ -18,6 +18,10 @@ class Team {
     this.grade = this.teamStore.rootStore.gradeStore.resolve(json.gradeId);
     this.fixtureNumber = json.fixtureNumber;
   }
+
+  addMember( player ) {
+    this.members.push( player );
+  }
 }
 
 export default Team;

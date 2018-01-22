@@ -6,16 +6,18 @@ import {inject} from 'mobx-react';
 class Team extends Component {
   render() {
     const teamId = this.props.match.params.teamid;
-    const team = this.props.teamStore.resolve( teamId );
+    const team = this.props.teamStore.resolve(teamId);
+    const members = team.members;
+    const stats = members.map( m => (<tr><td>{m.name}</td><td /><td /><td /></tr>) );
     return (
         <div className="team">
           <div className="teamName"> {team.grade.name} - {team.club.name}</div>
 
-          <div className="matches">
+          <div className="matchesContainer">
             <div className="header">
               Matches
             </div>
-            <table>
+            <table className="matches">
               <thead>
               <tr>
                 <th>#</th>
@@ -28,21 +30,79 @@ class Team extends Component {
               </thead>
               <tbody>
               <tr>
-                <td>1</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>1</td><td></td><td></td><td></td><td></td><td></td>
+              </tr><tr>
+                <td>14</td><td></td><td></td><td></td><td></td><td></td>
               </tr>
               </tbody>
             </table>
           </div>
-          <div className="ladder">
-            Ladder
+          <div className="ladderContainer">
+            <div className="header">
+              Ladder - Round 10
+            </div>
+            <table className="ladder">
+              <thead>
+              <tr>
+                <th>Club</th>
+                <th>Points</th>
+                <th>%</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
+              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
+              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
+              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
+              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
+              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
+              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
+              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
+              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
+              </tbody>
+            </table>
           </div>
-          <div className="stats">
-            Stats
+          <div className="statisticsContainer">
+            <div className="header">
+              Stats
+            </div>
+            <table className="statistics">
+              <thead>
+              <tr>
+                <th></th>
+                <th>1 Jan</th>
+                <th>8 Jan</th>
+                <th>15 Jan</th>
+              </tr>
+              </thead>
+              <tbody>
+              {stats}
+              </tbody>
+            </table>
           </div>
         </div>
     );

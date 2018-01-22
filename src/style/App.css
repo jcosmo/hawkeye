@@ -10,6 +10,10 @@ header {
   flex-direction: row;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 .contentPanel {
   width: 100%;
   height: 100%;
@@ -113,3 +117,40 @@ header {
 .fixtureSummary th {
   padding-right: 1em;
 }
+
+.team {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.team .teamName {
+  font-weight: bold;
+  font-size: 1rem;
+  flex-basis: 100%;
+}
+
+.team .header {
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+
+.team table th {
+  padding: 0.2em 1em 0.2em 0.5em;
+  font-weight:normal;
+  text-align: left;
+  border: 1px solid grey;
+}
+
+.team td {
+  padding: 0.2em 1em 0.2em 0.5em;
+  border: 1px solid grey;
+}
+
+.team .statisticsContainer {
+  flex-basis: 100%;
+}
+
+
