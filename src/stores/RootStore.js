@@ -3,6 +3,7 @@ import GradeStore from './GradeStore';
 import TeamStore from './TeamStore';
 import FixtureStore from './FixtureStore';
 import PlayerStore from './PlayerStore';
+import MatchStore from './MatchStore';
 
 class RootStore {
   clubStore;
@@ -10,6 +11,7 @@ class RootStore {
   teamStore;
   playerStore;
   fixtureStore;
+  matchStore;
 
   constructor() {
     this.clubStore = new ClubStore(this);
@@ -17,6 +19,7 @@ class RootStore {
     this.teamStore = new TeamStore(this);
     this.fixtureStore = new FixtureStore(this);
     this.playerStore = new PlayerStore(this);
+    this.matchStore = new MatchStore(this);
   }
 }
 

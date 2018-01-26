@@ -15,7 +15,7 @@ class Fixture extends Component {
         </div>);
     return (
         <div className="fixture">
-          <div className="fixtureGrade">{grade.name}</div>
+          <div className="fixtureGrade"><Link to={`/grade/${grade.id}`}>{grade.name}</Link></div>
           {teams}
         </div>
     );

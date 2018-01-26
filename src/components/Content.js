@@ -4,6 +4,8 @@ import Clubs from "./Clubs";
 import Ladders from "./Ladders";
 import Fixtures from "./Fixtures";
 import Team from "./Team";
+import Grade from "./Grade";
+import Round from "./Round";
 
 export default class Content extends Component {
   render() {
@@ -14,6 +16,8 @@ export default class Content extends Component {
             <Route path="/clubs" component={Clubs}/>
             <Route path="/ladders" component={Ladders}/>
             <Route path="/team/:teamid" component={Team}/>
+            <Route path="/grade/:gradeid/round/:roundNumber" component={Round}/>
+            <Route path="/grade/:gradeid" component={Grade}/>
             <Redirect from="/" to="/fixture" exact/>
           </Switch>
         </div>

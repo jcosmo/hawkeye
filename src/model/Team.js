@@ -7,6 +7,7 @@ class Team {
   @observable grade;
   @observable fixtureNumber;
   @observable members = [];
+  @observable matches = [];
 
   constructor(teamStore, id) {
     this.id = id;
@@ -19,8 +20,12 @@ class Team {
     this.fixtureNumber = json.fixtureNumber;
   }
 
-  addMember( player ) {
-    this.members.push( player );
+  addMember(player) {
+    this.members.push(player);
+  }
+
+  addMatch(match) {
+    this.matches.push(match);
   }
 }
 

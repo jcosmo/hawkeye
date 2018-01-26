@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-
 import {inject} from 'mobx-react';
+import Ladder from './Ladder';
 
 @inject(stores => ({teamStore: stores.rootStore.teamStore}))
 class Team extends Component {
@@ -8,10 +8,11 @@ class Team extends Component {
     const teamId = this.props.match.params.teamid;
     const team = this.props.teamStore.resolve(teamId);
     const members = team.members;
-    const stats = members.map( m => (<tr><td>{m.name}</td><td /><td /><td /></tr>) );
+    const stats = members.map(m => Team.statRow(m));
+    const matches = team.matches.sort((a, b) => b.roundNumber - a.roundNumber).map(m => Team.matchRow(m, team));
     return (
         <div className="team">
-          <div className="teamName"> {team.grade.name} - {team.club.name}</div>
+          <div className="teamName">{team.grade.name} - {team.club.name}</div>
 
           <div className="matchesContainer">
             <div className="header">
@@ -29,63 +30,11 @@ class Team extends Component {
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>1</td><td></td><td></td><td></td><td></td><td></td>
-              </tr><tr>
-                <td>14</td><td></td><td></td><td></td><td></td><td></td>
-              </tr>
+              {matches}
               </tbody>
             </table>
           </div>
-          <div className="ladderContainer">
-            <div className="header">
-              Ladder - Round 10
-            </div>
-            <table className="ladder">
-              <thead>
-              <tr>
-                <th>Club</th>
-                <th>Points</th>
-                <th>%</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
-              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
-              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
-              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
-              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
-              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
-              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
-              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
-              <tr><td>the club name</td><td>20</td><td>100.2</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <Ladder gradeid={team.grade.id}/>
           <div className="statisticsContainer">
             <div className="header">
               Stats
@@ -106,6 +55,34 @@ class Team extends Component {
           </div>
         </div>
     );
+  }
+
+  static statRow(member) {
+    return <tr key={member.id}>
+      <td>{member.name}</td>
+      <td/>
+      <td/>
+      <td/>
+    </tr>
+  }
+
+  static matchRow(match, team) {
+    const isHome = match.homeTeam === team;
+    const opposition = isHome ? match.awayTeam : match.homeTeam;
+    let result = "";
+    let points = "";
+    if (match.isCompleted) {
+      result = match.isDraw ? `draw, ${match.homeScore} all` : `${match.winningTeam === team ? 'won' : 'lost'} by ${match.scoreDifference}`;
+      points = match.isDraw ? 2 : (match.winningTeam === team ? 4 : 0);
+    }
+    return <tr key={match.id}>
+      <td>{match.round.number}</td>
+      <td>{match.round.date}</td>
+      <td>{isHome ? 'home' : 'away'}</td>
+      <td>{opposition.club.name}</td>
+      <td>{result}</td>
+      <td>{points}</td>
+    </tr>
   }
 }
 
