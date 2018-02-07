@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {inject} from 'mobx-react';
+import {Link} from "react-router-dom";
 import Ladder from './Ladder';
 
 @inject(stores => ({teamStore: stores.rootStore.teamStore}))
@@ -15,25 +16,25 @@ class Team extends Component {
           <div className="teamName">{team.grade.name} - {team.club.name}</div>
 
           <div className="matchesContainer">
-            <div className="header">
-              Matches
-            </div>
-            <table className="matches">
-              <thead>
-              <tr>
-                <th>#</th>
-                <th>Date</th>
-                <th></th>
-                <th>Opposition</th>
-                <th>Result</th>
-                <th>Points</th>
-              </tr>
-              </thead>
-              <tbody>
-              {matches}
-              </tbody>
-            </table>
+          <div className="header">
+            Matches
           </div>
+          <table className="matches">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th></th>
+              <th>Opposition</th>
+              <th>Result</th>
+              <th>Points</th>
+            </tr>
+            </thead>
+            <tbody>
+            {matches}
+            </tbody>
+          </table>
+        </div>
           <Ladder gradeid={team.grade.id}/>
           <div className="statisticsContainer">
             <div className="header">
@@ -76,7 +77,7 @@ class Team extends Component {
       points = match.isDraw ? 2 : (match.winningTeam === team ? 4 : 0);
     }
     return <tr key={match.id}>
-      <td>{match.round.number}</td>
+      <td><Link to={`/match/${match.id}`}>{match.round.number}</Link></td>
       <td>{match.round.date}</td>
       <td>{isHome ? 'home' : 'away'}</td>
       <td>{opposition.club.name}</td>

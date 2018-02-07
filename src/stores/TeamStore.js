@@ -23,13 +23,13 @@ class TeamStore {
       {id: 13, clubId: 2, gradeId: 3, fixtureNumber: 2},
       {id: 14, clubId: 2, gradeId: 4, fixtureNumber: 2},
       {id: 15, clubId: 3, gradeId: 5, fixtureNumber: 2},
-      {id: 17, clubId: 3, gradeId: 6, fixtureNumber: 2},
-      {id: 18, clubId: 3, gradeId: 6, fixtureNumber: 3},
-      {id: 19, clubId: 3, gradeId: 6, fixtureNumber: 4},
-      {id: 20, clubId: 3, gradeId: 6, fixtureNumber: 5},
-      {id: 21, clubId: 3, gradeId: 6, fixtureNumber: 6},
-      {id: 22, clubId: 3, gradeId: 6, fixtureNumber: 7},
-      {id: 23, clubId: 3, gradeId: 6, fixtureNumber: 8},
+      {id: 17, clubId: 3, gradeId: 6, fixtureNumber: 2, name: 'ccc red'},
+      {id: 18, clubId: 3, gradeId: 6, fixtureNumber: 3, name: 'ccc white'},
+      {id: 19, clubId: 3, gradeId: 6, fixtureNumber: 4, name: 'ccc blue'},
+      {id: 20, clubId: 3, gradeId: 6, fixtureNumber: 5, name: 'ccc green'},
+      {id: 21, clubId: 3, gradeId: 6, fixtureNumber: 6, name: 'ccc black'},
+      {id: 22, clubId: 3, gradeId: 6, fixtureNumber: 7, name: 'ccc orange'},
+      {id: 23, clubId: 3, gradeId: 6, fixtureNumber: 8, name: 'ccc pink'},
     ].forEach(json => this.updateTeamFromJson(json))
   }
 

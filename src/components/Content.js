@@ -6,6 +6,7 @@ import Fixtures from "./Fixtures";
 import Team from "./Team";
 import Grade from "./Grade";
 import Round from "./Round";
+import Match from "./Match";
 
 export default class Content extends Component {
   render() {
@@ -18,6 +19,7 @@ export default class Content extends Component {
             <Route path="/team/:teamid" component={Team}/>
             <Route path="/grade/:gradeid/round/:roundNumber" component={Round}/>
             <Route path="/grade/:gradeid" component={Grade}/>
+            <Route path="/match/:matchid" component={Match}/>
             <Redirect from="/" to="/fixture" exact/>
           </Switch>
         </div>
