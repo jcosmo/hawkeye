@@ -12,11 +12,7 @@ class PlayerStore {
 
   load() {
     [
-      {id: 1, name: 'Tom Sawyer', teamId: 1},
-      {id: 2, name: 'John Smith', teamId: 1},
-      {id: 3, name: 'Some Dood', teamId: 1},
-      {id: 4, name: 'Bob Brown', teamId: 2},
-      {id: 5, name: 'Monkey Boy', teamId: 2},
+
     ].forEach(json => this.updatePlayerFromJson(json))
   }
 

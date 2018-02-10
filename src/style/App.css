@@ -152,3 +152,7 @@ table {
 .team .statisticsContainer {
   flex-basis: 100%;
 }
+
+.teamName {
+  white-space: nowrap;
+}

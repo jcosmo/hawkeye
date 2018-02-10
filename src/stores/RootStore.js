@@ -20,6 +20,28 @@ class RootStore {
     this.fixtureStore = new FixtureStore(this);
     this.playerStore = new PlayerStore(this);
     this.matchStore = new MatchStore(this);
+    this.fetchData();
+  }
+
+  processJson(json) {
+    this.clubStore.load(json['clubs']);
+  }
+
+  fetchData() {
+    return fetch('http://localhost:8088/scrape')
+        .then((response) => {
+          return response.json()
+        })
+        .then((json) => {
+          this.clubStore.load(json['clubs']);
+          this.gradeStore.load(json['grades']);
+          this.teamStore.load(json['teams']);
+        })
+        .catch((ex) => {
+          console.log("Error");
+          console.log(ex);
+          return {};
+        });
   }
 }
 

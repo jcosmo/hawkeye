@@ -34,9 +34,9 @@ class Round extends Component {
 
   matchesRow(match) {
     return <tr key={match.id}>
-      <td>{match.homeTeam.club.name}</td>
-      <td>{match.homeTeam.club.name}</td>
-      <td>{match.isDraw ? 'Draw' : `${match.winningTeam.club.name} by ${match.scoreDifference}`}</td>
+      <td>{match.homeTeam.label}</td>
+      <td>{match.homeTeam.label}</td>
+      <td>{match.isDraw ? 'Draw' : `${match.winningTeam.label} by ${match.scoreDifference}`}</td>
     </tr>
   }
 }

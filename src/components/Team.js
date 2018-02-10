@@ -13,7 +13,7 @@ class Team extends Component {
     const matches = team.matches.sort((a, b) => b.roundNumber - a.roundNumber).map(m => Team.matchRow(m, team));
     return (
         <div className="team">
-          <div className="teamName">{team.grade.name} - {team.club.name}</div>
+          <div className="teamName">{team.grade.name} - {team.label}</div>
 
           <div className="matchesContainer">
           <div className="header">
@@ -80,7 +80,7 @@ class Team extends Component {
       <td><Link to={`/match/${match.id}`}>{match.round.number}</Link></td>
       <td>{match.round.date}</td>
       <td>{isHome ? 'home' : 'away'}</td>
-      <td>{opposition.club.name}</td>
+      <td>{opposition.label}</td>
       <td>{result}</td>
       <td>{points}</td>
     </tr>

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link} from 'react-router-dom';
 
-class Team extends Component {
+class TeamSummary extends Component {
   render() {
     return (
         <div className="team">
@@ -13,4 +13,4 @@ class Team extends Component {
   }
 }
 
-export default Team;
+export default TeamSummary;

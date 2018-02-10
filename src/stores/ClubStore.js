@@ -1,4 +1,4 @@
-import {observable} from "mobx";
+import {observable, action} from "mobx";
 import Club from '../model/Club';
 
 class ClubStore {
@@ -7,17 +7,13 @@ class ClubStore {
 
   constructor(rootStore ) {
     this.rootStore = rootStore;
-    this.load();
   }
 
-  load() {
-    [
-      {id: 1, name: 'aaa'},
-      {id: 2, name: 'bbb'},
-      {id: 3, name: 'ccc'},
-    ].forEach(json => this.updateClubFromJson(json))
+  load(clubs) {
+    clubs.forEach(json => this.updateClubFromJson(json))
   }
 
+  @action
   updateClubFromJson(json) {
     let club = this.clubs.find(x => x.id === json.id);
     if (!club) {
