@@ -33,9 +33,10 @@ class RootStore {
           return response.json()
         })
         .then((json) => {
-          this.clubStore.load(json['clubs']);
-          this.gradeStore.load(json['grades']);
-          this.teamStore.load(json['teams']);
+          this.clubStore.load(json['clubs'] || []);
+          this.gradeStore.load(json['grades'] || []);
+          this.teamStore.load(json['teams'] || []);
+          this.fixtureStore.load(json['fixture'] || []);
         })
         .catch((ex) => {
           console.log("Error");

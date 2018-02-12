@@ -1,21 +1,30 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import {inject} from 'mobx-react';
+import {inject, observer} from 'mobx-react';
 
 @inject(stores => ({gradeStore: stores.rootStore.gradeStore}))
+@observer
 class FixtureSummary extends Component {
   render() {
     const gradeid = this.props.gradeid;
-    if ( gradeid ) {
+    if (gradeid) {
       this.grade = this.props.gradeStore.resolve(gradeid);
+      if (!this.grade) {
+        return <div>Loading...</div>;
+      }
     }
     const fixture = this.props.fixture;
+
+    if (0 === fixture.orderedSchedule.length) {
+      return <div>Loading...</div>;
+    }
     const rounds = fixture.orderedSchedule.map(round => {
       let roundNumber = `${round.number}`;
-      if ( this.grade ) {
+      if (this.grade) {
         roundNumber = <Link to={`/grade/${gradeid}/round/${round.number}`}>{roundNumber}</Link>;
       }
-      const schedule = Object.keys(round.schedule).map(home => (<span key={home}>{home} v {round.schedule[home]}</span>));
+      const schedule = Object.keys(round.schedule).map(home => (
+          <span key={home}>{home} v {round.schedule[home]}</span>));
       return <tr key={round.number}>
         <td>{roundNumber}</td>
         <td>{round.date}</td>
@@ -29,7 +38,7 @@ class FixtureSummary extends Component {
         <th>Date</th>
         <th>Matches</th>
       </tr>
-          {rounds}
+      {rounds}
       </tbody>
     </table>
   }

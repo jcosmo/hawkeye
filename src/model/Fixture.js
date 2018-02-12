@@ -7,11 +7,15 @@ class Fixture {
 
   constructor(fixtureStore) {
     this.fixtureStore = fixtureStore;
+    this.schedule = [];
   }
 
   updateFromJson(json) {
-    let rounds = json.rounds;
     this.schedule = [];
+    let rounds = json.rounds;
+    if (!rounds) {
+      return;
+    }
     rounds.forEach(roundJson => {
       let round = new Round();
       round.updateFromJson(roundJson);
@@ -21,7 +25,7 @@ class Fixture {
 
   @computed
   get orderedSchedule() {
-    return this.schedule.sort((a, b) => b.roundNumber - a.roundNumber);
+    return this.schedule.sort((a, b) => a.number - b.number);
   }
 
   round(roundNumber) {
