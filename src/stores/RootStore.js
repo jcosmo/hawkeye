@@ -4,6 +4,7 @@ import TeamStore from './TeamStore';
 import FixtureStore from './FixtureStore';
 import PlayerStore from './PlayerStore';
 import MatchStore from './MatchStore';
+import {action} from 'mobx';
 
 class RootStore {
   clubStore;
@@ -23,8 +24,12 @@ class RootStore {
     this.fetchData();
   }
 
+  @action
   processJson(json) {
-    this.clubStore.load(json['clubs']);
+    this.clubStore.load(json['clubs'] || []);
+    this.gradeStore.load(json['grades'] || []);
+    this.teamStore.load(json['teams'] || []);
+    this.fixtureStore.load(json['fixture'] || []);
   }
 
   fetchData() {
@@ -33,10 +38,7 @@ class RootStore {
           return response.json()
         })
         .then((json) => {
-          this.clubStore.load(json['clubs'] || []);
-          this.gradeStore.load(json['grades'] || []);
-          this.teamStore.load(json['teams'] || []);
-          this.fixtureStore.load(json['fixture'] || []);
+          this.processJson(json);
         })
         .catch((ex) => {
           console.log("Error");
