@@ -19,7 +19,7 @@ class Team {
     this.club = this.teamStore.rootStore.clubStore.resolve(json.clubId);
     this.name = json.name;
     this.grade = this.teamStore.rootStore.gradeStore.resolve(json.gradeId);
-    this.fixtureNumber = json.fixtureNumber;
+    this.fixtureNumber = parseInt(json.fixtureNumber, 10);
   }
 
   addMember(player) {

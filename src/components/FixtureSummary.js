@@ -7,24 +7,27 @@ import {inject, observer} from 'mobx-react';
 class FixtureSummary extends Component {
   render() {
     const gradeid = this.props.gradeid;
-    if (gradeid) {
-      this.grade = this.props.gradeStore.resolve(gradeid);
-      if (!this.grade) {
-        return <div>Loading...</div>;
-      }
+    let grade;
+    if (gradeid !== undefined) {
+      grade = this.props.gradeStore.resolve(gradeid);
     }
     const fixture = this.props.fixture;
 
-    if (0 === fixture.orderedSchedule.length) {
-      return <div>Loading...</div>;
-    }
     const rounds = fixture.orderedSchedule.map(round => {
       let roundNumber = `${round.number}`;
-      if (this.grade) {
+      if (grade) {
         roundNumber = <Link to={`/grade/${gradeid}/round/${round.number}`}>{roundNumber}</Link>;
       }
-      const schedule = Object.keys(round.schedule).map(home => (
-          <span key={home}>{home} v {round.schedule[home]}</span>));
+      const schedule = Object.keys(round.schedule).map(home => {
+        if (grade) {
+          let homeTeam = grade.team(home);
+          console.log(`Home team ${home}: ${homeTeam}`);
+          let awayTeam = grade.team(round.schedule[home]);
+          console.log(`Away team ${round.schedule[home]}: ${awayTeam.label}`);
+          return <span key={home}>{homeTeam.label} v {awayTeam.label}</span>;
+        }
+        return <span key={home}>{home} v {round.schedule[home]}</span>;
+      });
       return <tr key={round.number}>
         <td>{roundNumber}</td>
         <td>{round.date}</td>

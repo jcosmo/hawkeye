@@ -19,20 +19,22 @@ class Grade {
   }
 
   @computed
-  get
-  teams() {
+  get teams() {
     return this.gradeStore.rootStore.teamStore.findForGrade(this);
   }
 
+  team(fixtureNumber) {
+    const match = parseInt(fixtureNumber, 10);
+    return this.teams.find(t => t.fixtureNumber === match)
+  }
+
   @computed
-  get
-  name() {
+  get name() {
     return `${this.letter} ${this.category}${this.level !== 0 ? ' ' + this.level : ''}`;
   }
 
   @computed
-  get
-  rank() {
+  get rank() {
     let base = ('D'.charCodeAt(0) - this.letter.charCodeAt(0)) * 30;
     if (this.category === 'Special') {
       base = base + 20;
