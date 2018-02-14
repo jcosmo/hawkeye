@@ -1,40 +1,44 @@
 import React, {Component} from "react";
-import {inject} from 'mobx-react';
+import {inject, observer} from 'mobx-react';
 import {Link} from "react-router-dom";
 import Ladder from './Ladder';
 
 @inject(stores => ({teamStore: stores.rootStore.teamStore}))
+@observer
 class Team extends Component {
   render() {
     const teamId = this.props.match.params.teamid;
     const team = this.props.teamStore.resolve(teamId);
+    if (!team) {
+      return <div>Loading...</div>;
+    }
     const members = team.members;
     const stats = members.map(m => Team.statRow(m));
     const matches = team.matches.sort((a, b) => b.roundNumber - a.roundNumber).map(m => Team.matchRow(m, team));
     return (
         <div className="team">
-          <div className="teamName">{team.grade.name} - {team.label}</div>
+          <div className="teamName"><Link to={`/grade/${team.grade.id}`}>{team.grade.name}</Link> - {team.label}</div>
 
           <div className="matchesContainer">
-          <div className="header">
-            Matches
+            <div className="header">
+              Matches
+            </div>
+            <table className="matches">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th></th>
+                <th>Opposition</th>
+                <th>Result</th>
+                <th>Points</th>
+              </tr>
+              </thead>
+              <tbody>
+              {matches}
+              </tbody>
+            </table>
           </div>
-          <table className="matches">
-            <thead>
-            <tr>
-              <th>#</th>
-              <th>Date</th>
-              <th></th>
-              <th>Opposition</th>
-              <th>Result</th>
-              <th>Points</th>
-            </tr>
-            </thead>
-            <tbody>
-            {matches}
-            </tbody>
-          </table>
-        </div>
           <Ladder gradeid={team.grade.id}/>
           <div className="statisticsContainer">
             <div className="header">
