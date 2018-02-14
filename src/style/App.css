@@ -69,6 +69,11 @@ table {
 .sidebar .activeLink {
   font-weight: bold;
 }
+.fixturesContainer {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
 
 .fixtures {
   display: flex;

@@ -16,7 +16,7 @@ class Fixtures extends Component {
     const fixture = this.props.fixtureStore.fixture;
     const fixtures = grades.map(grade => <Fixture key={grade.id} grade={grade}/>);
     return (
-        <div>
+        <div className="fixturesContainer">
           <div className="fixtures">
             {fixtures}
           </div>
