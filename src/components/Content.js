@@ -22,7 +22,7 @@ export default class Content extends Component {
             <Route path="/grade/:gradeid/round/:roundNumber" component={Round}/>
             <Route path="/grade/:gradeid" component={Grade}/>
             <Route path="/match/:matchid" component={Match}/>
-            <Redirect from="/" to="/fixture" exact/>
+            <Redirect from="/" to="/fixtures" exact/>
           </Switch>
         </div>
     );
