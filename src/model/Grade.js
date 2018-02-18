@@ -1,4 +1,4 @@
-import {computed, observable} from "mobx";
+import {computed, observable, action} from "mobx";
 
 class Grade {
   gradeStore;
@@ -6,6 +6,7 @@ class Grade {
   @observable letter = "D";
   @observable category = 'Special';
   @observable level = 0;
+  @observable ladder;
 
   constructor(gradeStore, id) {
     this.gradeStore = gradeStore;
@@ -43,6 +44,11 @@ class Grade {
       base = base + 10;
     }
     return base + (6 - this.level);
+  }
+
+  @action
+  setLadder(ladder) {
+    this.ladder = ladder;
   }
 }
 
