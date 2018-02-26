@@ -6,11 +6,16 @@ import {inject, observer} from 'mobx-react';
 @observer
 class ClubList extends Component {
   render() {
-    if ( 0 === this.props.clubStore.clubs.length )
+    if ( this.props.clubStore.loading )
     {
       return <div>Loading...</div>;
     }
-    const content = this.props.clubStore.clubs.map(club => <li key={club.id}>
+    const clubs = this.props.clubStore.clubs;
+    if ( 0 === clubs.length )
+    {
+      return <div>No clubs</div>;
+    }
+    const content = clubs.slice(0).sort( (a,b) => a.name.localeCompare(b.name) ).map(club => <li key={club.id}>
       <Link to={this.props.match.url + "/" + club.id}>{club.name}</Link>
     </li>);
 
