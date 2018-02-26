@@ -6,15 +6,27 @@ import {inject, observer} from 'mobx-react';
 @observer
 class Club extends Component {
   render() {
+    if (this.props.clubStore.loading ) {
+      return <div>Loading...</div>;
+    }
     const club = this.props.clubStore.resolve(this.props.match.params.clubid);
+    if ( !club ) {
+      return <div>No such club</div>;
+    }
+
+    const content = club.teams.map( team => (<div key={team.id}><Link to={`/team/${team.id}`}>{team.grade.name}</Link></div>));
     return (
-        <div className="club">
+        <div className="clubPage">
           <div>
-            Welcome to the {club.name} Tennis Club.
-            <br/>
-            Here we will have details of the grades that this club have teams in, perhaps the ladders?
-            <br/>
-            Ability to click through to a particular <Link to={"/team/2"}>team</Link>
+            The {club.name} Tennis Club.
+          </div>
+          <div className="teamsContainer">
+            <div className="header">
+              Teams
+            </div>
+            <div className="clubs">
+              {content}
+            </div>
           </div>
         </div>
     );
