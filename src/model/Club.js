@@ -1,9 +1,10 @@
-import {observable} from "mobx";
+import {observable, action} from "mobx";
 
 class Club {
   clubStore;
   id;
   @observable name = "";
+  @observable teams = [];
 
   constructor(store, id) {
     this.clubStore = store;
@@ -12,6 +13,11 @@ class Club {
 
   updateFromJson(json) {
     this.name = json.name;
+  }
+
+  @action
+  addTeam( team ) {
+    this.teams.push( team)
   }
 }
 

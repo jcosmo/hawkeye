@@ -1,4 +1,4 @@
-import {observable, computed} from "mobx";
+import {computed, observable} from "mobx";
 
 class Team {
   teamStore;
@@ -17,6 +17,7 @@ class Team {
 
   updateFromJson(json) {
     this.club = this.teamStore.rootStore.clubStore.resolve(json.clubId);
+    this.club.addTeam(this);
     this.name = json.name;
     this.grade = this.teamStore.rootStore.gradeStore.resolve(json.gradeId);
     this.fixtureNumber = parseInt(json.fixtureNumber, 10);
