@@ -34,7 +34,7 @@ class Ladder extends Component {
     return (
         <div className="ladderContainer">
           <div className="header">
-            Ladder - Round XXX - {grade.name}
+            Ladder - Round {ladder.round} - {grade.name}
           </div>
           {content}
         </div>

@@ -5,6 +5,7 @@ class Ladder {
   teamStore;
   id;
   @observable grade;
+  @observable round;
   @observable teams = [];
 
   constructor(ladderStore, id) {
@@ -14,16 +15,17 @@ class Ladder {
   }
 
   updateFromJson(json) {
+    this.round = json.round;
     this.grade = this.gradeStore.resolve(json.gradeId);
     if (this.grade) {
       this.grade.setLadder(this);
     }
-    json.teams.forEach( teamDetail => {
-      const score ={team: undefined, points: 0, percentage: 0};
+    json.teams.forEach(teamDetail => {
+      const score = {team: undefined, points: 0, percentage: 0};
       score.team = this.teamStore.resolve(teamDetail.teamId);
       score.points = teamDetail.points;
       score.percentage = teamDetail.percentage;
-      this.teams.push( score );
+      this.teams.push(score);
     })
   }
 }
