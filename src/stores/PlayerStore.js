@@ -1,19 +1,13 @@
 import {observable} from "mobx";
 import Player from '../model/Player';
+import BaseStore from './BaseStore';
 
-class PlayerStore {
-  rootStore;
+class PlayerStore extends BaseStore{
   @observable players = [];
 
-  constructor(rootStore) {
-    this.rootStore = rootStore;
-    this.load();
-  }
-
-  load() {
-    [
-
-    ].forEach(json => this.updatePlayerFromJson(json))
+  load(players) {
+    players.forEach(json => this.updatePlayerFromJson(json));
+    this.loaded();
   }
 
   updatePlayerFromJson(json) {

@@ -1,16 +1,13 @@
 import {observable} from "mobx";
 import Ladder from '../model/Ladder';
+import BaseStore from './BaseStore';
 
-class LadderStore {
-  rootStore;
+class LadderStore extends BaseStore{
   @observable ladders = [];
-
-  constructor(rootStore) {
-    this.rootStore = rootStore;
-  }
 
   load(ladders) {
     ladders.forEach(json => this.updateLadderFromJson(json));
+    this.loaded();
   }
 
   updateLadderFromJson(json) {

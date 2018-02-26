@@ -1,16 +1,13 @@
 import {observable} from "mobx";
 import Team from '../model/Team';
+import BaseStore from './BaseStore';
 
-class TeamStore {
-  rootStore;
+class TeamStore extends BaseStore{
   @observable teams = [];
 
-  constructor(rootStore) {
-    this.rootStore = rootStore;
-  }
-
   load(teams) {
-    teams.forEach(json => this.updateTeamFromJson(json))
+    teams.forEach(json => this.updateTeamFromJson(json));
+    this.loaded();
   }
 
   updateTeamFromJson(json) {

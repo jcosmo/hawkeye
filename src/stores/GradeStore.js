@@ -1,16 +1,13 @@
 import {observable} from "mobx";
 import Grade from '../model/Grade';
+import BaseStore from './BaseStore';
 
-class GradeStore {
-  rootStore;
+class GradeStore extends BaseStore {
   @observable grades = [];
-
-  constructor(rootStore) {
-    this.rootStore = rootStore;
-  }
 
   load(grades) {
     grades.forEach(json => this.updateGradeFromJson(json));
+    this.loaded();
   }
 
   updateGradeFromJson(json) {

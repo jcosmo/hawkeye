@@ -1,17 +1,18 @@
 import {observable} from "mobx";
 import Fixture from '../model/Fixture';
+import BaseStore from './BaseStore';
 
-class FixtureStore {
-  rootStore;
+class FixtureStore extends BaseStore{
   @observable fixture;
 
   constructor(rootStore) {
-    this.rootStore = rootStore;
+    super(rootStore);
     this.fixture = new Fixture(this);
   }
 
   load(json) {
     this.updateFixtureFromJson(json);
+    this.loaded();
   }
 
   updateFixtureFromJson(json) {

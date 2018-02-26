@@ -1,16 +1,13 @@
 import {observable, action} from "mobx";
 import Club from '../model/Club';
+import BaseStore from './BaseStore';
 
-class ClubStore {
-  rootStore;
+class ClubStore extends BaseStore {
   @observable clubs = [];
-
-  constructor(rootStore ) {
-    this.rootStore = rootStore;
-  }
 
   load(clubs) {
     clubs.forEach(json => this.updateClubFromJson(json))
+    this.loaded();
   }
 
   @action

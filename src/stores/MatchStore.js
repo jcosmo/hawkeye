@@ -1,19 +1,13 @@
 import {observable} from "mobx";
 import Match from '../model/Match';
+import BaseStore from './BaseStore';
 
-class MatchStore {
-  rootStore;
+class MatchStore extends BaseStore{
   @observable matches = [];
 
-  constructor(rootStore) {
-    this.rootStore = rootStore;
-    this.load();
-  }
-
-  load() {
-    [
-
-    ].forEach(json => this.updateMatchFromJson(json))
+  load(matches) {
+    matches.forEach(json => this.updateMatchFromJson(json));
+    this.loaded();
   }
 
   updateMatchFromJson(json) {
