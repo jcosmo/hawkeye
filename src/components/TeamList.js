@@ -11,8 +11,8 @@ class TeamList extends Component {
 
     const content = grade.teams.sort((a, b) => a.fixtureNumber - b.fixtureNumber).map(
         team => <tr key={team.id}>
-          <td><Link to={`/team/${team.id}`}>{team.fixtureNumber}</Link></td>
-          <td>{team.label}</td>
+          <td>{team.fixtureNumber}</td>
+          <td><Link to={`/team/${team.id}`}>{team.label}</Link></td>
         </tr>);
 
     return (
