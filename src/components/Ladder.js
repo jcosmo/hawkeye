@@ -11,11 +11,7 @@ class Ladder extends Component {
       content = <div>Loading ...</div>;
     }
     else {
-      const rungs = ladder.teams.map(team => (<tr key={team.team.id}>
-        <td>{team.team.label}</td>
-        <td>{team.points}</td>
-        <td>{team.percentage}</td>
-      </tr>));
+      const rungs = ladder.teams.map(team => this.teamRow(team));
       content = <table className="ladder">
         <thead>
         <tr>
@@ -39,6 +35,21 @@ class Ladder extends Component {
           {content}
         </div>
     );
+  }
+
+  teamRow(team) {
+    if (!team.team) {
+      return (<tr>
+        <td>Unknown ({team.unmatched})</td>
+        <td/>
+        <td/>
+      </tr>);
+    }
+    return (<tr key={team.team.id}>
+      <td>{team.team.label}</td>
+      <td>{team.points}</td>
+      <td>{team.percentage}</td>
+    </tr>);
   }
 }
 

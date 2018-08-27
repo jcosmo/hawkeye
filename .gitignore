@@ -25,3 +25,9 @@ yarn.lock
 *.iws
 *.ipr
 *.iml
+
+# nsnta clone
+/public/*.html
+/public/bak
+/public/clone
+/public/results

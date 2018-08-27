@@ -21,7 +21,8 @@ class Ladder {
       this.grade.setLadder(this);
     }
     json.teams.forEach(teamDetail => {
-      const score = {team: undefined, points: 0, percentage: 0};
+      const score = {team: undefined, points: 0, percentage: 0, unmatched: undefined};
+      score.unmatched = teamDetail.unmatched;
       score.team = this.teamStore.resolve(teamDetail.teamId);
       score.points = teamDetail.points;
       score.percentage = teamDetail.percentage;
