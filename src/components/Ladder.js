@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 import {inject} from 'mobx-react';
 
 @inject(stores => ({gradeStore: stores.rootStore.gradeStore}))
@@ -46,7 +47,7 @@ class Ladder extends Component {
       </tr>);
     }
     return (<tr key={team.team.id}>
-      <td>{team.team.label}</td>
+      <td><Link to={`/team/${team.team.id}`}>{team.team.label}</Link></td>
       <td>{team.points}</td>
       <td>{team.percentage}</td>
     </tr>);
