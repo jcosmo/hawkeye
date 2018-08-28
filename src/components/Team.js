@@ -85,7 +85,7 @@ class Team extends Component {
       <td>{match.round.date}</td>
       <td>{isHome ? 'home' : 'away'}</td>
       <td><Link to={`/team/${opposition.id}`}>{opposition.label}</Link></td>
-        <td><Link to={`/match/${match.id}`}>{result}</Link></td>
+      <td><Link to={`/match/${match.id}`}>{result}</Link></td>
       <td>{points}</td>
     </tr>
   }

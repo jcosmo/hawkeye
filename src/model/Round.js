@@ -22,6 +22,10 @@ class Round {
   matchForTeam(team) {
     return this.matches.find(m => m.isForTeam(team));
   }
+
+  matchesForGrade(grade) {
+    return this.matches.filter(m => m.isForGrade(grade));
+  }
 }
 
 export default Round;

@@ -1,13 +1,22 @@
 import React, {Component} from "react";
-import {inject} from 'mobx-react';
+import {inject, observer} from 'mobx-react';
+import {Link} from "react-router-dom";
 
 @inject(stores => ({gradeStore: stores.rootStore.gradeStore, fixtureStore: stores.rootStore.fixtureStore}))
+@observer
 class Round extends Component {
   render() {
-    const grade = this.props.gradeStore.resolve(this.props.match.params.gradeid);
     const fixture = this.props.fixtureStore.fixture;
+    const grade = this.props.gradeStore.resolve(this.props.match.params.gradeid);
+    if (!grade || !fixture) {
+      return <div>Loading...</div>;
+    }
     const round = fixture.round(this.props.match.params.roundNumber);
-    const matches = round.matches.map(m => this.matchesRow(m));
+    if ( !round ) {
+      return <div>Not Found</div>;
+    }
+    const matches = round.matchesForGrade(grade).map(m => this.matchesRow(m));
+
     return (
         <div className="round">
           <div className="roundName"> {grade.name} - Round {round.number}</div>
@@ -34,9 +43,9 @@ class Round extends Component {
 
   matchesRow(match) {
     return <tr key={match.id}>
-      <td>{match.homeTeam.label}</td>
-      <td>{match.homeTeam.label}</td>
-      <td>{match.isDraw ? 'Draw' : `${match.winningTeam.label} by ${match.scoreDifference}`}</td>
+      <td><Link to={`/team/${match.homeTeam.id}`}>{match.homeTeam.label}</Link></td>
+      <td><Link to={`/team/${match.awayTeam.id}`}>{match.awayTeam.label}</Link></td>
+      <td><Link to={`/match/${match.id}`}>{match.isDraw ? 'Draw' : `${match.winningTeam.label} by ${match.scoreDifference}`}</Link></td>
     </tr>
   }
 }

@@ -4,6 +4,7 @@ class Match {
   matchStore;
   id;
   @observable round;
+  @observable grade;
   @observable homeTeam;
   @observable awayTeam;
   @observable homePlayers = [];
@@ -20,6 +21,7 @@ class Match {
   updateFromJson(json) {
     this.round = this.matchStore.rootStore.fixtureStore.fixture.round(json.roundNumber);
     this.homeTeam = this.matchStore.rootStore.teamStore.resolve(json.homeTeamId);
+    this.grade = this.homeTeam.grade;
     this.awayTeam = this.matchStore.rootStore.teamStore.resolve(json.awayTeamId);
     this.homeScore = json.homeScore;
     this.awayScore = json.awayScore;
@@ -43,6 +45,10 @@ class Match {
 
   isForTeam(team) {
     return this.awayTeam === team || this.homeTeam === team;
+  }
+
+  isForGrade(grade) {
+    return this.grade === grade;
   }
 
   @computed
