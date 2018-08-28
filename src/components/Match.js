@@ -1,10 +1,14 @@
 import React, {Component} from "react";
-import {inject} from 'mobx-react';
+import {inject, observer} from 'mobx-react';
 
-@inject(stores => ({gradeStore: stores.rootStore.gradeStore, fixtureStore: stores.rootStore.fixtureStore}))
+@inject(stores => ({matchStore: stores.rootStore.matchStore}))
+  @observer
 class Match extends Component {
   render() {
-    const match = this.props.gradeStore.resolve(this.props.match.params.matchid);
+    const match = this.props.matchStore.resolve(this.props.match.params.matchid);
+    if (!match) {
+      return <div>Loading ...</div>
+    }
 
     return (
         <div className="match">
