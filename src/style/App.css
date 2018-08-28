@@ -136,7 +136,15 @@ table {
   justify-content: space-between;
 }
 
-.team .ladderContainer, .grade .ladderContainer {
+.team .matchesContainer {
+  margin-right: 3em;
+}
+
+.team .ladderContainer {
+  flex-grow: 1;
+}
+
+.grade .fixtureContainer {
   flex-grow: 1;
   margin-left: 3em;
 }

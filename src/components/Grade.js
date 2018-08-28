@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {inject, observer} from 'mobx-react';
 import Ladder from './Ladder';
 import FixtureSummary from './FixtureSummary';
-import TeamList from './TeamList';
 
 @inject(stores => ({gradeStore: stores.rootStore.gradeStore, fixtureStore: stores.rootStore.fixtureStore}))
 @observer
@@ -16,7 +15,6 @@ class Grade extends Component {
     return (
         <div className="grade">
           <div className="gradeName"> {grade.name} </div>
-          <TeamList gradeid={grade.id}/>
           <Ladder gradeid={grade.id}/>
           <FixtureSummary fixture={fixture} gradeid={grade.id}/>
         </div>
