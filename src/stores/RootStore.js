@@ -34,6 +34,7 @@ class RootStore {
     this.teamStore.load(json['teams'] || []);
     this.fixtureStore.load(json['fixture'] || []);
     this.ladderStore.load(json['ladders'] || []);
+    this.matchStore.load(json['matches'] || []);
   }
 
   fetchData() {
