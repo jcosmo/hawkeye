@@ -26,7 +26,7 @@ class Team extends Component {
             <table className="matches">
               <thead>
               <tr>
-                <th>#</th>
+                <th>Round</th>
                 <th>Date</th>
                 <th></th>
                 <th>Opposition</th>
@@ -81,11 +81,11 @@ class Team extends Component {
       points = match.isDraw ? 2 : (match.winningTeam === team ? 4 : 0);
     }
     return <tr key={match.id}>
-      <td><Link to={`/match/${match.id}`}>{match.round.number}</Link></td>
+      <td><Link to={`/grade/${team.grade.id}/round/${match.round.number}`}>{match.round.number}</Link></td>
       <td>{match.round.date}</td>
       <td>{isHome ? 'home' : 'away'}</td>
-      <td>{opposition.label}</td>
-      <td>{result}</td>
+      <td><Link to={`/team/${opposition.id}`}>{opposition.label}</Link></td>
+        <td><Link to={`/match/${match.id}`}>{result}</Link></td>
       <td>{points}</td>
     </tr>
   }
